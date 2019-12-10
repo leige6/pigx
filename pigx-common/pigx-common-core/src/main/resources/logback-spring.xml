@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="false">
+	<springProperty scop="context" name="spring.application.name" source="spring.application.name" defaultValue=""/>
+
+	<property name="APP_NAME" value="${spring.application.name}" />
+	<property name="LOG_HOME" value="logs/${spring.application.name}"/>
+
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%black(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n)</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_HOME}/${APP_NAME}/%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+			<maxFileSize>20MB</maxFileSize>
+		</rollingPolicy>
+		<encoder class="com.pig4cloud.pigx.common.core.logs.ExtendPatternLayoutEncoder" >
+			<appName>${APP_NAME}</appName>
+		</encoder>
+	</appender>
+
+	<appender name="KafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+		<encoder class="com.pig4cloud.pigx.common.core.logs.ExtendPatternLayoutEncoder" >
+			<appName>${APP_NAME}</appName>
+		</encoder>
+		<topic>bus-log</topic>
+		<keyingStrategy class="com.github.danielwegener.logback.kafka.keying.HostNameKeyingStrategy" />
+		<deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy" />
+		<producerConfig>bootstrap.servers=192.168.174.128:9092</producerConfig>
+		<producerConfig>acks=0</producerConfig>
+		<!-- wait up to 1000ms and collect log messages before sending them as a batch -->
+		<producerConfig>linger.ms=1000</producerConfig>
+		<producerConfig>block.on.buffer.full=false</producerConfig>
+		<producerConfig>metadata.fetch.timeout.ms=5000</producerConfig>
+		<producerConfig>compression.type=gzip</producerConfig>
+		<appender-ref ref="RollingFile" />
+	</appender>
+	<appender name="ASYNCKafkaAppender" class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="KafkaAppender" />
+	</appender>
+
+	<!-- Level: FATAL 0  ERROR 3  WARN 4  INFO 6  DEBUG 7 -->
+	<root level="DEBUG">
+		<!--开发环境输出到控制台-->
+		<appender-ref ref="CONSOLE"/>
+
+		<!--其它环境输出到kafka-->
+		<appender-ref ref="ASYNCKafkaAppender" />
+	</root>
+</configuration>

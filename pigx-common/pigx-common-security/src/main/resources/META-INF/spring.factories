@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.pig4cloud.pigx.common.security.feign.PigxFeignConfiguration,\
+  com.pig4cloud.pigx.common.security.service.PigxUserDetailsServiceImpl

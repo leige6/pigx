@@ -1,0 +1,21 @@
+spring:
+  # 安全配置
+  security:
+    user:
+      name: ENC(rZHA4LW5hHmhLAAzJoFNag==)     # pigx
+      password: ENC(bjeyh+Aeii3kHXkoo00ZUw==) # pigx
+  boot:
+    admin:
+      ui:
+        resource-locations: 'classpath:/ui/,classpath:/static/'
+        template-location: 'classpath:/ui/'
+        title: 'Leige 服务状态监控'
+        brand: 'Leige 服务状态监控'
+      notify:
+        mail:
+          to: 624764859@qq.com
+          from: yourleige@163.com
+  mail:
+    host: smtp.163.com
+    username: yourleige@163.com
+    password: ENC(0EmeKse9sC2QL12gKt5hRQ==)
