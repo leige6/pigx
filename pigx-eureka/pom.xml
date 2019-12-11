@@ -58,10 +58,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
-		<dependency>
+		<!--此处elk配置文件-->
+		<!--<dependency>
 			<groupId>com.pig4cloud</groupId>
 			<artifactId>pigx-common-core</artifactId>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>

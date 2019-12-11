@@ -59,8 +59,8 @@
 			<artifactId>transmittable-thread-local</artifactId>
 			<version>${ttl.version}</version>
 		</dependency>
-
-		<dependency>
+		<!--ELK依赖包-->
+		<!--<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.2.3</version>
@@ -74,6 +74,6 @@
 			<groupId>com.github.danielwegener</groupId>
 			<artifactId>logback-kafka-appender</artifactId>
 			<version>0.2.0-RC2</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 </project>
