@@ -59,7 +59,7 @@
 		<ttl.version>2.10.1</ttl.version>
 		<minio.version>3.0.12</minio.version>
 		<elastic-job-lite.version>2.1.5</elastic-job-lite.version>
-		<security.oauth.version>2.3.4.RELEASE</security.oauth.version>
+		<security.oauth.version>2.3.6.RELEASE</security.oauth.version>
 		<security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
 		<activiti.version>5.22.0</activiti.version>
 		<docker.url>http://192.168.0.13:4243</docker.url>
