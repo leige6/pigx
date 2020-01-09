@@ -90,4 +90,13 @@ public interface CommonConstants {
 	 * 默认存储bucket
 	 */
 	String BUCKET_NAME = "lengleng";
+
+	/**
+	 * 表单重复提交判断时间（单位：s）
+	 */
+	long NO_REPEATSUBMIT_TIME=2;
+	/**
+	 * 表单重复提交redis的key前缀
+	 */
+	String FRONT_KEY="FORM_SUB_REP_";
 }

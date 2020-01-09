@@ -78,6 +78,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.checkTokenAccess("isAuthenticated()");
 	}
 
+	//AuthorizationEndpoint 支持的授权类型可以通过 AuthorizationServerEndpointsConfigurer 进行配置。 默认情况下，除了密码之外，所有的授权类型都是受支持的（请参阅下面的关于如何打开的细节）
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
 		endpoints
@@ -124,6 +125,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			additionalInfo.put("dept_id", pigxUser.getDeptId());
 			additionalInfo.put("tenant_id", pigxUser.getTenantId());
 			additionalInfo.put("license", SecurityConstants.PIGX_LICENSE);
+			additionalInfo.put("avatar_url","https://pics.lvjs.com.cn/pics/uploads/pc/place2/2018-02-27/0d6da4ff-141c-414a-99ba-26aac3dd314b.jpg");
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
 			return accessToken;
 		};

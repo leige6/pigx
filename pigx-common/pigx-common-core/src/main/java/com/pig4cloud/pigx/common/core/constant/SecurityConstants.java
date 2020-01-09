@@ -24,6 +24,11 @@ package com.pig4cloud.pigx.common.core.constant;
  * @date 2017-12-18
  */
 public interface SecurityConstants {
+
+	/**
+	 * Authorization
+	 */
+	String AUTHORIZATION = "Authorization";
 	/**
 	 * 刷新
 	 */

@@ -82,6 +82,7 @@ public class PasswordDecoderFilter extends AbstractGatewayFilterFactory {
 			if (StrUtil.isNotBlank(password)) {
 				try {
 					password = decryptAES(password, encodeKey);
+					log.info("密码解密后:{}", password);
 				} catch (Exception e) {
 					log.error("密码解密失败:{}", password);
 					return Mono.error(e);

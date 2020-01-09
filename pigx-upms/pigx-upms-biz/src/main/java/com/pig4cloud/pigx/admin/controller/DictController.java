@@ -29,6 +29,7 @@ import com.pig4cloud.pigx.admin.api.entity.SysDictDetail;
 import com.pig4cloud.pigx.admin.service.SysDictDetailService;
 import com.pig4cloud.pigx.admin.service.SysDictService;
 import com.pig4cloud.pigx.common.core.util.R;
+import com.pig4cloud.pigx.common.data.annotation.NoRepeatSubmit;
 import com.pig4cloud.pigx.common.log.annotation.SysLog;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
@@ -160,6 +161,7 @@ public class DictController {
 	 * @param sysDict 字典信息
 	 * @return success、false
 	 */
+	@NoRepeatSubmit
 	@SysLog("添加字典")
 	@PostMapping
 	@CacheEvict(value = "dict_details", key = "#sysDict.code")
@@ -175,6 +177,7 @@ public class DictController {
 	 * @param sysDictDetail 字典信息
 	 * @return success、false
 	 */
+	@NoRepeatSubmit
 	@SysLog("添加字典值")
 	@PostMapping("/detail/save")
 	@PreAuthorize("@pms.hasPermission('sys_dict_add')")
@@ -217,6 +220,7 @@ public class DictController {
 	 * @param sysDict 字典信息
 	 * @return success/false
 	 */
+	@NoRepeatSubmit
 	@PutMapping
 	@SysLog("修改字典")
 	@CacheEvict(value = "dict_details", key = "#sysDict.code")
@@ -232,6 +236,7 @@ public class DictController {
 	 * @param sysDictDetail 字典值信息
 	 * @return success/false
 	 */
+	@NoRepeatSubmit
 	@PutMapping("/detail/update")
 	@SysLog("修改字典")
 	@PreAuthorize("@pms.hasPermission('sys_dict_edit')")
