@@ -56,12 +56,12 @@ public class PigxAdminApplicationTest {
 	@Test
 	public void testHashMap() throws InterruptedException{
 		final AtomicInteger at=new AtomicInteger(0);
-		final CountDownLatch countDownLatch=new CountDownLatch(100);//并发计数器
-		for (int i=0;i<100;i++){
+		final CountDownLatch countDownLatch=new CountDownLatch(1000);//并发计数器
+		for (int i=0;i<1000;i++){
            new Thread(new Runnable() {
 			   @Override
 			   public void run() {
-				  while (at.get()<1000000){
+				  while (at.get()<10000000){
                      //向map中添加元素
 					  map.put(at.get(),at.get());
 					  at.incrementAndGet();//对int加1
